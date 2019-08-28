@@ -1,0 +1,26 @@
+<body>
+  <center style="font-size:10vw" id="timer"></center>
+<body>
+
+<script>
+
+  var urlParams = window.location.search.substring(1);
+
+  participants = !urlParams ? 1 : urlParams;
+
+  var start = new Date().getTime();
+
+  var x = setInterval(function() {
+
+    var time = (new Date().getTime() - start)*participants;
+
+    var day = Math.floor((time % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((time % (1000 * 60)) / 1000);
+
+    document.getElementById("timer").innerHTML = day + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+  }, 50);
+
+</script>
